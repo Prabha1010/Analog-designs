@@ -1,0 +1,46 @@
+*  Generated for: PrimeSim
+*  Design library name: BGR
+*  Design cell name: Bandgap_CMOS
+*  Design view name: schematic
+.lib 'saed32nm.lib' TT
+
+*Custom Compiler Version S-2021.09
+*Sat Feb 26 21:40:07 2022
+
+.global gnd!
+********************************************************************************
+* Library          : BGR
+* Cell             : Bandgap_CMOS
+* View             : schematic
+* View Search List : hspice hspiceD schematic spice veriloga
+* View Stop List   : hspice hspiceD
+********************************************************************************
+v21 net86 gnd! dc=1
+xm24 net45 net21 net86 net86 p105 w=0.1u l=3.5u nf=1 m=1
+xm3 net28 net21 net86 net86 p105 w=3.5u l=0.06u nf=1 m=1
+xm17 net79 net79 net68 net79 p105 w=0.1u l=3.5u nf=1 m=1
+xm16 net76 net79 net64 net76 p105 w=0.1u l=3.5u nf=1 m=1
+xm15 net64 net64 net86 net86 p105 w=0.1u l=3.5u nf=1 m=1
+xm14 net68 net21 net86 net86 p105 w=1u l=0.3u nf=1 m=1
+xm5 vout net21 net86 net86 p105 w=0.1u l=3.5u nf=1 m=1
+xm2 net21 net21 net86 net86 p105 w=0.1u l=3.5u nf=1 m=1
+xm20 net21 net76 net28 net28 n105 w=0.15u l=0.06u nf=1 m=1
+xm19 net76 net79 gnd! gnd! n105 w=1u l=0.06u nf=1 m=1
+xm18 net79 net79 gnd! gnd! n105 w=3.5u l=0.06u nf=1 m=1
+xm11 vout vout gnd! gnd! n105 w=3.5u l=0.2u nf=1 m=1
+xm10 net36 net36 gnd! gnd! n105 w=0.5u l=0.15u nf=1 m=1
+xm9 net45 net45 net36 net36 n105 w=0.145u l=0.1u nf=1 m=1
+xm8 net28 net45 net48 net48 n105 w=1u l=0.06u nf=1 m=1
+xm7 net25 net45 gnd! gnd! n105 w=1u l=1.5u nf=1 m=1
+xm6 net21 net48 net25 net25 n105 w=0.5u l=0.1u nf=1 m=1
+.tran '100n' '100m' name=tran
+.dcOP
+.dc temp lin '101' '-20' '140' name=dc
+
+.option primesim_remove_probe_prefix = 0
+.probe v(*) i(*) level=1
+.probe tran v(vout) v(net21) v(net28)
+.temp 25
+.option primesim_output=wdf
+.option parhier = LOCAL
+.end
